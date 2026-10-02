@@ -1,165 +1,153 @@
 <div align="center">
 
-# MovieBox-TUI
+# 🎬 MovieBox-TUI
 
-**Terminal interface to find, download, and stream movies, TV shows, and live TV using local media players.**
+**Stream & download Movies, TV Series, Anime, and Live TV directly inside your terminal.**  
+*Optimized for PC (Windows/Linux/macOS) and Mobile (Android Termux) with 1-Click Launchers.*
 
 [ English ](README.md) • [ বাংলা ](README_BN.md) • [ हिन्दी ](README_HI.md) • [ Español ](README_ES.md)
 
-[![CI](https://img.shields.io/github/actions/workflow/status/mesamirh/MovieBox-Tui/ci.yml?branch=main&label=CI&logo=github&style=flat)](https://github.com/mesamirh/MovieBox-Tui/actions/workflows/ci.yml)
-[![crates.io](https://img.shields.io/crates/v/moviebox-tui.svg?logo=rust&style=flat)](https://crates.io/crates/moviebox-tui)
-[![License](https://img.shields.io/badge/license-MIT%2FApache--2.0-blue.svg?style=flat)](#license)
-[![Telegram](https://img.shields.io/badge/Telegram-Channel-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://t.me/getfromme)
-[![Support](https://img.shields.io/badge/Support-Crypto-F7931A?style=flat&logo=bitcoin&logoColor=white)](#optional-support)
+[![License: MIT/Apache-2.0](https://img.shields.io/badge/License-MIT%2FApache--2.0-blue.svg?style=for-the-badge)](#license)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS%20%7C%20Android-success?style=for-the-badge&logo=android&logoColor=white)](#installation)
+[![UI Theme](https://img.shields.io/badge/Theme-TokyoNight%20%2F%20Mocha-purple?style=for-the-badge&logo=visualstudiocode)](#themes)
+[![Player](https://img.shields.io/badge/Player-VLC%20%7C%20MPV%20%7C%20IINA-orange?style=for-the-badge&logo=vlc)](#prerequisites)
+
+---
+
 </div>
 
-[moviebox-tui-walkthrough.webm](https://github.com/user-attachments/assets/7554a7e5-6ff5-49ec-9d87-f821ea99950e)
+## 🌟 Highlights
 
-## Features
+- ⚡ **1-Click PC Launcher:** Instant launch via `run.bat` with auto VLC detection and TokyoNight theme.
+- 📱 **Mobile Touch Controls:** Customized Termux setup with on-screen directional touch pad (`mobile_setup.sh`).
+- 🎬 **Multi-Source Streaming:** Movies, TV series, anime, Asian dramas, and community Stremio addons.
+- 📺 **Live TV & IPTV:** M3U playlist integration with categorized channels and search.
+- 🎯 **Quality Selector:** Choose stream resolution (`4K`, `1080p`, `720p`, `480p`, `Auto`) on the fly.
+- 🎧 **External Player Forwarding:** Direct playback in `VLC`, `MPV`, `IINA`, or Android Players with stream proxying.
+- 📥 **Batch Downloader:** Multi-segment HTTP range downloader with pause and resume.
+- 💬 **Multi-Language Subtitles:** Live subtitle fetching and interactive track selection.
+- 🔒 **100% Private:** Zero telemetry, no sign-in required, local history and favorites.
 
-- **Streaming:** Movies, TV series, anime, Asian dramas, and community Stremio addons across multiple native providers.
-- **Live TV:** M3U playlist import with channel categories, EPG support, and search.
-- **Resolution Picker:** Direct stream quality selection (`4K`, `1080p`, `720p`, `480p`, `Auto`) before playback.
-- **Hardware Players:** Direct launch in `mpv`, `VLC`, or `IINA` with custom auth header and cookie forwarding.
-- **Batch Downloader:** Multi-segment concurrent downloader with HTTP range pause and resume for episodes and full seasons.
-- **Subtitle Picker:** Multi-language subtitle tracks extracted and selectable via an interactive picker before playback or download.
-- **Terminal UI:** Vim navigation, mouse interaction, slash command palette (`/help`, `/settings`), and 9 built-in themes.
-- **Cover Art:** Native Kitty, Sixel, and iTerm2 poster rendering with automatic text fallback.
-- **Resume & Library:** Home deck with continue-watching timestamps, watch history, and favorites stored strictly on local disk. Zero telemetry.
+---
 
-## Prerequisites
+## 🚀 Quick Start (PC & Mobile)
 
-- **Media Player:** `mpv`, `VLC`, or `IINA` (macOS) / any external video player (Android).
-- **Posters:** Terminal with Sixel, Kitty, or iTerm2 support (Ghostty, Kitty, WezTerm, iTerm2, foot, Windows Terminal v1.22+).
-- **DASH Downloads:** `yt-dlp` and `ffmpeg` (required only for MovieBox DASH downloads).
+### 💻 Windows (Instant 1-Click Launch)
 
-## Installation
+Simply double-click **`run.bat`** (or **`start.bat`**) in the project folder or on your Desktop:
+```cmd
+run.bat
+```
+> *Automatically configures UTF-8, window layout, VLC media player, and TokyoNight styling.*
 
-### macOS & Linux
+---
 
-If you have [Homebrew](https://brew.sh/) on macOS:
+### 📱 Android (Termux 1-Command Setup)
+
+Open **Termux** on your phone and run this single command:
+```bash
+pkg update -y && pkg install -y curl tar termux-tools termux-am && mkdir -p ~/.termux && echo "extra-keys = [['ESC','UP','/','TAB','ENTER'],['LEFT','DOWN','RIGHT','SPACE','q']]" > ~/.termux/termux.properties && termux-reload-settings && curl -fsSL https://raw.githubusercontent.com/mesamirh/MovieBox-Tui/main/install.sh | bash && echo "alias mb='export MOVIEBOX_THEME=TokyoNight && moviebox-tui'" >> ~/.bashrc && termux-setup-storage
+```
+
+After installation, just type **`mb`** to launch MovieBox anytime with on-screen touch buttons!
+
+---
+
+## 🎮 Easy Controls
+
+| Action | PC (Keyboard & Mouse) | Mobile (Termux Touch Bar) |
+| :--- | :--- | :--- |
+| **Navigate** | `↑` `↓` `←` `→` Arrow Keys | `[ ▲ ]` `[ ▼ ]` `[ ◄ ]` `[ ► ]` |
+| **Select / Play** | `Enter` or **Mouse Click** | `[ ENTER ]` or Screen Tap |
+| **Search** | `/` (Slash) | `[ / ]` Touch Button |
+| **Back / Cancel** | `Esc` | `[ ESC ]` Touch Button |
+| **Switch Tabs** | `Tab` / `Shift+Tab` | `[ TAB ]` Touch Button |
+| **Settings** | `/settings` | `/settings` |
+| **Quit App** | `q` | `[ q ]` Touch Button |
+
+---
+
+## 📦 Standard Installation
+
+### 🍎 macOS & Linux
+```bash
+# Direct install script
+curl -fsSL https://raw.githubusercontent.com/mesamirh/MovieBox-Tui/main/install.sh | bash
+```
+
+Or via [Homebrew](https://brew.sh/):
 ```bash
 brew tap mesamirh/moviebox-tui https://github.com/mesamirh/MovieBox-Tui
 brew install moviebox-tui
 ```
 
-> **Note:** If Homebrew prompts for tap verification on initial install, run `brew trust mesamirh/moviebox-tui`.
-
-Direct install via Terminal (macOS & Linux, no package manager needed):
-```bash
-curl -fsSL https://raw.githubusercontent.com/mesamirh/MovieBox-Tui/main/install.sh | bash
+### 🪟 Windows (Direct PowerShell)
+```powershell
+irm https://raw.githubusercontent.com/mesamirh/MovieBox-Tui/main/install.ps1 | iex
 ```
 
-### Windows
-
-If you have [Scoop](https://scoop.sh/) (recommended):
+Or via [Scoop](https://scoop.sh/):
 ```powershell
 scoop bucket add moviebox https://github.com/mesamirh/MovieBox-Tui
 scoop install moviebox-tui
 ```
 
-Direct install via PowerShell (no package manager needed):
-```powershell
-irm https://raw.githubusercontent.com/mesamirh/MovieBox-Tui/main/install.ps1 | iex
-```
-
-> **SmartScreen prompt:** If Windows displays *"Windows protected your PC"*, click **More info** → **Run anyway**.
-
-### Android (Termux)
-```bash
-pkg update && pkg install -y curl tar termux-tools termux-am
-curl -fsSL https://raw.githubusercontent.com/mesamirh/MovieBox-Tui/main/install.sh | bash
-termux-setup-storage
-```
-
 <details>
-<summary><b>Cargo & Source Build</b></summary>
+<summary><b>🛠️ Cargo / Build From Source</b></summary>
 
 ```bash
-cargo install moviebox-tui --locked
-```
-
-From source:
-```bash
-git clone https://github.com/mesamirh/MovieBox-Tui.git
+git clone https://github.com/hananchughtai7080/MovieBox-Tui.git
 cd MovieBox-Tui
 cargo build --release --locked
 ```
-
 </details>
 
-<details>
-<summary><b>Verify Release Integrity</b></summary>
+---
 
+## 🎨 Themes
+
+MovieBox-TUI comes with 9 modern built-in color schemes:
+
+- **TokyoNight** *(Default in run.bat)*
+- **Mocha** (Catppuccin)
+- **Dracula**
+- **Nord**
+- **RosePine**
+- **Gruvbox**
+- **Macchiato** / **Frappe** / **Latte**
+
+Change theme anytime via environment variable:
 ```bash
-sha256sum -c SHA256SUMS --ignore-missing
-gh attestation verify <archive-file> -R mesamirh/MovieBox-Tui
+set MOVIEBOX_THEME=TokyoNight   # Windows CMD
+export MOVIEBOX_THEME=TokyoNight # Linux/macOS/Termux
 ```
+Or open the in-app command palette: `/settings` → **Appearance**.
 
-</details>
+---
 
-<details>
-<summary><b>Uninstall</b></summary>
+## 📚 Documentation
 
-Re-run install command (`curl ... | bash` or `irm ... | iex`) and select `2) Uninstall`.
+Detailed guides available in the [`docs/`](docs/) directory:
 
-Or via package manager:
-```bash
-brew uninstall moviebox-tui     # Homebrew
-scoop uninstall moviebox-tui    # Scoop
-cargo uninstall moviebox-tui    # Cargo
-```
+- [🎮 Keyboard & Controls Guide](docs/controls.md)
+- [⚙️ Configuration & Themes](docs/config.md)
+- [📡 Content Providers & Scrapers](docs/providers.md)
+- [🧩 Stremio Community Addons](docs/addons-mode.md)
+- [📺 Live TV & IPTV Guide](docs/tv-mode.md)
+- [🎬 Media Players Setup (VLC, MPV, IINA)](docs/players.md)
+- [📥 Batch Downloads](docs/downloads.md)
 
-</details>
+---
 
-## Quick Start
+## 🛡️ Privacy & Security
 
-```bash
-moviebox-tui
-```
+- **Zero Telemetry:** No user data collection, metrics, or remote tracking.
+- **Local Storage:** Watch history, bookmarks, and configs reside solely on your device.
+- **Open Source:** Fully inspectable codebase.
 
-- Type to search, press `Enter` to play.
-- Press `?` for shortcuts, or type `/settings` for preferences.
+---
 
-## Documentation
+## 📄 License & Disclaimer
 
-Full documentation at [**mesamirh.github.io/MovieBox-Tui**](https://mesamirh.github.io/MovieBox-Tui/) or [`docs/`](docs/):
-
-| Guide | Description |
-| :--- | :--- |
-| [Keyboard & Controls](docs/controls.md) | Keybindings, vim navigation, and shortcuts |
-| [Configuration](docs/config.md) | Settings, themes, and environment variables |
-| [Content Providers](docs/providers.md) | Native scrapers (MovieBox, 4KHDHub, Dramachi, BDIX) |
-| [Stremio Addons](docs/addons-mode.md) | Community addon configuration and streaming |
-| [Hardware Players](docs/players.md) | Player detection, launch options, and flags |
-| [Live TV & IPTV](docs/tv-mode.md) | M3U playlist import and channel streaming |
-| [Batch Downloads](docs/downloads.md) | HTTP range engine, pause, and resume |
-
-## Contributing
-
-Review [CONTRIBUTING.md](CONTRIBUTING.md) before submitting pull requests. Report bugs via [GitHub Issues](https://github.com/mesamirh/MovieBox-Tui/issues).
-
-<details>
-<summary><b>Support</b></summary>
-<div id="optional-support" tabindex="-1"></div>
-
-| Asset | Address |
-| :--- | :--- |
-| **USDT (TRC20)** | `TL4yW73qmbKZpBWwbEFgjBpwVkPDFTkJgV` |
-| **Bitcoin (BTC)** | `3MEAtqtRWrQBhnaMi3Zuf5nt2efNUS2LUQ` |
-| **Ethereum (EVM)** | `0x7ea20d5fa29d87f33195f5a3b211ff94038d794c` |
-| **Solana (SOL)** | `6ctm5WFv73MNywoCKAz3xK72yizSspHa72rFNygooU6` |
-
-</details>
-
-## Privacy
-
-Zero telemetry, analytics, or user tracking. History, favorites, and config remain local.
-
-## License
-
-Dual-licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE).
-
-## Disclaimer
-
-MovieBox-TUI does not host or store media. It plays publicly available streams. Users must comply with local laws.
+- **License:** Dual-licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE).
+- **Disclaimer:** MovieBox-TUI does not host, scrape, or store copyrighted media files. It functions strictly as an open-source terminal interface for publicly accessible web feeds and playlists.
